@@ -38,23 +38,23 @@ result = inventors.filter(blah => {
 console.log(result);
 
 console.log("Print out an array of the numbers which are odd");
-result = numbers.filter(blah => blah % 2 == 1);
+result = numbers.filter(num => num % 2 == 1);
 console.log(result);
 
 console.log("Print out an array of the numbers that have two digits");
-result = numbers.filter(blah => (blah >= 10 && blah <= 99));
+result = numbers.filter(num => (num >= 10 && num <= 99));
 console.log(result);
 
 console.log("Print out an array of the numbers which are prime");
-result = numbers.filter(blah => {
-    if (blah == 1) {
+result = numbers.filter(num => {
+    if (num == 1) {
         return false;
     }
-    else if (blah == 2) {
+    else if (num == 2) {
         return true;
     } else {
-        for (let i = 2; i < blah; i++) {
-            if (blah % i == 0) {
+        for (let i = 2; i < num; i++) {
+            if (num % i == 0) {
                 return false;
             }
         }
@@ -88,7 +88,7 @@ result = inventors.map((blah) => {
 console.log(result);
 
 console.log("Print out an array of every number multiplied by 100");
-result = numbers.map(blah => blah * 100);
+result = numbers.map(num => num * 100);
 console.log(result);
 
 //Sort
@@ -128,24 +128,67 @@ console.log(result);
 //Reduce
 
 console.log("Find the sum of all the numbers");
+result = numbers.reduce((total, num) => {
+    return total + num;
+})
+console.log(result);
 
 console.log("Find the sum of all the even numbers");
+result = numbers.reduce((total, num) => {
+    return (num % 2 == 0) ? total + num : total;
+})
+console.log(result);
+
 console.log("Create a string that has the first name of every inventor");
+result = inventors.sort().reduce((string, item) => {
+    return string + item.split(" ", 1);
+}, "");
+console.log(result);
 
 //Some & Every
 
 console.log("Does any inventor have the letter 'y' in their name?");
+result = inventors.some((blah) => {
+    return blah.search('y') > -1;
+});
+console.log(result);
+
 console.log("Does every inventor have the letter 'e' in their name?");
+result = inventors.some((blah) => {
+    return blah.search('e') > -1;
+});
+console.log(result);
+
 console.log("Does every inventor have first name that's longer than 4 characters?");
+result = inventors.some((blah) => {
+    return blah.split(" ")[0].length > 4;
+});
+console.log(result);
 
 //Find & FindIndex
 
 console.log("Find the inventor that has a middle name");
+result = inventors.find((blah) => {
+    return blah.split(" ").length > 2;
+});
+console.log(result);
+
 console.log("Bonus: Return a new array, that only has inventors without a middle name. (Hint: think about splice, if you use findIndex. But you may also use another of the methods you've learned about above)");
+result = inventors.filter((blah) => {
+    return blah.split(" ").length == 2;
+});
 
 console.log("Find the number divisible by 7");
+result = numbers.filter((num) => {
+    return (num % 7 == 0) ? num : false;
+})
+console.log(result);
 
 console.log("Bonus: Return a new array, that only has the numbers that are not divisible by 7");
+result = numbers.filter((num) => {
+    return (num % 7 != 0) ? num : false;
+})
+console.log(result);
 
 //Rocket
 /*The numbers in the numeric array weren't randomly chosen! Every number is the sum of the two previous numbers. Create a function, fib(n) that gives you the nth entry, where n is any number. For example, fib(14) should return 377. This isn't related to the problem at hand - you won't need to use map or find or anything like that, but it's a fun exercise and a very common interview problem.*/
