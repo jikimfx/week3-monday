@@ -78,42 +78,49 @@ result = inventors.map(blah => blah.toUpperCase());
 console.log(result);
 
 console.log("Print out initials of all inventors(e.g. A.E., I.N., ...");
-//wtf
+result = inventors.map((blah) => {
+    let eachName = blah.split(' ');
+    return eachName.reduce((total, name) => {
+        return total += name.charAt(0)
+    }, '')
+
+})
+console.log(result);
 
 console.log("Print out an array of every number multiplied by 100");
-result = numbers.map(blah => blah*100);
+result = numbers.map(blah => blah * 100);
 console.log(result);
 
 //Sort
 
 console.log("Sort all the inventors in alphabetical order, A-Z");
-result = inventors.sort((a,b) => {
-    if(a < b) return -1
-    else if(b < a) return 1
+result = inventors.sort((a, b) => {
+    if (a < b) return -1
+    else if (b < a) return 1
     else return 0
 })
 console.log(result);
 
 console.log("Sort all the inventors in reverse alphabetical order, Z-A. Do not use the reverse method");
-result = inventors.sort((a,b) => {
-    if(a < b) return 1
-    else if(b < a) return -1
+result = inventors.sort((a, b) => {
+    if (a < b) return 1
+    else if (b < a) return -1
     else return 0
 })
 console.log(result);
 
 console.log("Sort all the inventors by length of name, shortest name first");
 result = inventors.sort((a, b) => {
-    if(a.length < b.length) return -1
-    else if(b.length < a.length) return 1
+    if (a.length < b.length) return -1
+    else if (b.length < a.length) return 1
     else return 0
 })
 console.log(result);
 
 console.log("Sort all the inventors by length of name, longest name first. Do not use the reverse method");
 result = inventors.sort((a, b) => {
-    if(a.length < b.length) return 1
-    else if(b.length < a.length) return -1
+    if (a.length < b.length) return 1
+    else if (b.length < a.length) return -1
     else return 0
 })
 console.log(result);
@@ -121,6 +128,7 @@ console.log(result);
 //Reduce
 
 console.log("Find the sum of all the numbers");
+
 console.log("Find the sum of all the even numbers");
 console.log("Create a string that has the first name of every inventor");
 
