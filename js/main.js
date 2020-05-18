@@ -50,7 +50,7 @@ result = numbers.filter(blah => {
     if (blah == 1) {
         return false;
     }
-    else if (blah === 2) {
+    else if (blah == 2) {
         return true;
     } else {
         for (let i = 2; i < blah; i++) {
@@ -78,21 +78,45 @@ result = inventors.map(blah => blah.toUpperCase());
 console.log(result);
 
 console.log("Print out initials of all inventors(e.g. A.E., I.N., ...");
-result = inventors.map((blah,i) => {
-    blah.split(" ");
-    blah[i].split(1);
-    blah[i+1].split(1);
-})
-console.log(result);
+//wtf
 
 console.log("Print out an array of every number multiplied by 100");
+result = numbers.map(blah => blah*100);
+console.log(result);
 
 //Sort
 
 console.log("Sort all the inventors in alphabetical order, A-Z");
+result = inventors.sort((a,b) => {
+    if(a < b) return -1
+    else if(b < a) return 1
+    else return 0
+})
+console.log(result);
+
 console.log("Sort all the inventors in reverse alphabetical order, Z-A. Do not use the reverse method");
+result = inventors.sort((a,b) => {
+    if(a < b) return 1
+    else if(b < a) return -1
+    else return 0
+})
+console.log(result);
+
 console.log("Sort all the inventors by length of name, shortest name first");
+result = inventors.sort((a, b) => {
+    if(a.length < b.length) return -1
+    else if(b.length < a.length) return 1
+    else return 0
+})
+console.log(result);
+
 console.log("Sort all the inventors by length of name, longest name first. Do not use the reverse method");
+result = inventors.sort((a, b) => {
+    if(a.length < b.length) return 1
+    else if(b.length < a.length) return -1
+    else return 0
+})
+console.log(result);
 
 //Reduce
 
