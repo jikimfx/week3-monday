@@ -134,9 +134,10 @@ result = numbers.reduce((total, num) => {
 console.log(result);
 
 console.log("Find the sum of all the even numbers");
-result = numbers.reduce((total, num) => {
-    return (num % 2 == 0) ? total + num : total;
-})
+function getSum(total, num) {
+    return total + (num % 2 == 0 ? num : 0);
+}
+result = numbers.reduce(getSum, 0);
 console.log(result);
 
 console.log("Create a string that has the first name of every inventor");
@@ -154,13 +155,13 @@ result = inventors.some((blah) => {
 console.log(result);
 
 console.log("Does every inventor have the letter 'e' in their name?");
-result = inventors.some((blah) => {
+result = inventors.every((blah) => {
     return blah.search('e') > -1;
 });
 console.log(result);
 
 console.log("Does every inventor have first name that's longer than 4 characters?");
-result = inventors.some((blah) => {
+result = inventors.every((blah) => {
     return blah.split(" ")[0].length > 4;
 });
 console.log(result);
@@ -177,11 +178,10 @@ console.log("Bonus: Return a new array, that only has inventors without a middle
 result = inventors.filter((blah) => {
     return blah.split(" ").length == 2;
 });
+console.log(result);
 
 console.log("Find the number divisible by 7");
-result = numbers.filter((num) => {
-    return (num % 7 == 0) ? num : false;
-})
+result = numbers.find((num) => num % 7 == 0);
 console.log(result);
 
 console.log("Bonus: Return a new array, that only has the numbers that are not divisible by 7");
@@ -191,4 +191,20 @@ result = numbers.filter((num) => {
 console.log(result);
 
 //Rocket
-/*The numbers in the numeric array weren't randomly chosen! Every number is the sum of the two previous numbers. Create a function, fib(n) that gives you the nth entry, where n is any number. For example, fib(14) should return 377. This isn't related to the problem at hand - you won't need to use map or find or anything like that, but it's a fun exercise and a very common interview problem.*/
+
+let fibNumber = prompt("Enter Fibonacci Number");
+
+function getFib(fibNumber) {
+    let a = 1, b = 0, temp;
+    if (fibNumber == 0) return 0;
+    else {
+        while (fibNumber >= 1) {
+            temp = a;
+            a = a + b;
+            b = temp;
+            fibNumber--;
+        }
+        return b;
+    }
+}
+alert(`Your Fib number is ${getFib(fibNumber)}`);
